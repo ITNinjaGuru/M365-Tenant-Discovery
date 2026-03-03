@@ -1,0 +1,346 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "_comment": "M365 Tenant Discovery Configuration - Copy this file to discovery-config.json and customize",
+  "_version": "2.0.0",
+  "_documentation": "See README.md for detailed configuration options",
+
+  "Collection": {
+    "_description": "Configure which M365 workloads to collect data from",
+
+    "EntraID": {
+      "Enabled": true,
+      "IncludeUsers": true,
+      "IncludeGroups": true,
+      "IncludeDevices": true,
+      "IncludeApps": true,
+      "IncludeServicePrincipals": true,
+      "IncludeConditionalAccess": true,
+      "IncludeRoles": true,
+      "IncludeNamedLocations": true,
+      "IncludeAuthenticationMethods": true,
+      "IncludeAdministrativeUnits": true,
+      "IncludeAccessPackages": true,
+      "MaxUsersToProcess": 50000,
+      "MaxGroupsToProcess": 10000,
+      "IncludeGuestUsers": true,
+      "IncludeLicenseDetails": true
+    },
+
+    "Exchange": {
+      "Enabled": true,
+      "IncludeMailboxes": true,
+      "IncludeDistributionLists": true,
+      "IncludePublicFolders": true,
+      "IncludeTransportRules": true,
+      "IncludeConnectors": true,
+      "IncludeHybridConfig": true,
+      "IncludeJournaling": true,
+      "IncludeResourceMailboxes": true,
+      "IncludeMailContacts": true,
+      "IncludeMailUsers": true,
+      "IncludeMailboxPermissions": true,
+      "IncludeMailboxForwarding": true,
+      "MaxMailboxesForStats": 5000,
+      "CollectMailboxStatistics": true,
+      "IncludeAddressLists": true
+    },
+
+    "SharePoint": {
+      "Enabled": true,
+      "AdminUrl": "https://YOUR-TENANT-admin.sharepoint.com",
+      "IncludeSites": true,
+      "IncludeOneDrive": true,
+      "IncludeHubSites": true,
+      "IncludeSiteDesigns": true,
+      "IncludeTermStore": true,
+      "IncludeContentTypes": true,
+      "IncludeSharingSettings": true,
+      "IncludeExternalSharing": true,
+      "IncludeStorageQuotas": true,
+      "IncludeSiteTemplates": true,
+      "MaxSitesToProcess": 5000,
+      "CollectSiteStorageMetrics": true
+    },
+
+    "Teams": {
+      "Enabled": true,
+      "IncludeTeams": true,
+      "IncludePolicies": true,
+      "IncludeApps": true,
+      "IncludePhoneSystem": true,
+      "IncludePrivateChannels": true,
+      "IncludeSharedChannels": true,
+      "IncludeGuestSettings": true,
+      "IncludeMessagingPolicies": true,
+      "IncludeMeetingPolicies": true,
+      "IncludeLiveCaptions": true,
+      "MaxTeamsToProcess": 5000
+    },
+
+    "PowerBI": {
+      "Enabled": true,
+      "IncludeWorkspaces": true,
+      "IncludeGateways": true,
+      "IncludeCapacities": true,
+      "IncludeDatasets": true,
+      "IncludeReports": true,
+      "IncludeDashboards": true,
+      "IncludeDataflows": true,
+      "IncludeTenantSettings": true,
+      "CollectUsageMetrics": true
+    },
+
+    "Dynamics365": {
+      "Enabled": true,
+      "IncludeEnvironments": true,
+      "IncludePowerApps": true,
+      "IncludePowerAutomate": true,
+      "IncludeConnectors": true,
+      "IncludeDLPPolicies": true,
+      "IncludeDataverseSolutions": true,
+      "IncludeGovernanceSettings": true,
+      "IncludeD365Users": true,
+      "IncludeSecurityRoles": true,
+      "IncludeBusinessUnits": true
+    },
+
+    "Security": {
+      "Enabled": true,
+      "IncludeDLP": true,
+      "IncludeRetention": true,
+      "IncludeSensitivityLabels": true,
+      "IncludeeDiscovery": true,
+      "IncludeAlertPolicies": true,
+      "IncludeAuditPolicies": true,
+      "IncludeInformationBarriers": true,
+      "IncludeCommunicationCompliance": true,
+      "IncludeInsiderRisk": true,
+      "IncludeRecordsManagement": true,
+      "IncludeDataClassification": true,
+      "IncludeThreatPolicies": true
+    },
+
+    "HybridIdentity": {
+      "Enabled": true,
+      "IncludeAADConnect": true,
+      "IncludeFederation": true,
+      "IncludePassthrough": true,
+      "IncludeSeamlessSSO": true,
+      "IncludeDeviceWriteback": true,
+      "IncludeApplicationProxy": true,
+      "IncludePasswordProtection": true,
+      "IncludeExtensionAttributes": true,
+      "IncludeSyncRules": true
+    }
+  },
+
+  "AI": {
+    "_description": "Configure AI provider for intelligent analysis and recommendations",
+    "Enabled": true,
+    "Provider": "GPT-5.2",
+    "_supportedProviders": ["GPT-5.2", "Opus4.6", "Gemini-3-Pro"],
+    "ApiKey": null,
+    "Endpoint": null,
+    "Options": {
+      "MaxTokens": 12000,
+      "Temperature": 0.7,
+      "GenerateRemediationPlans": true,
+      "GenerateExecutiveSummary": true,
+      "GenerateRiskAssessment": true,
+      "GenerateMigrationRoadmap": true,
+      "IdentifyHiddenRisks": true,
+      "Language": "en-US"
+    },
+    "Fallback": {
+      "Enabled": true,
+      "FallbackProvider": "Opus4.6"
+    }
+  },
+
+  "Reporting": {
+    "_description": "Configure report generation options",
+    "GenerateITReport": true,
+    "GenerateExecutiveReport": true,
+    "IncludeRawData": true,
+    "CompressOutput": true,
+    "OutputFormat": "HTML",
+    "IncludeCharts": true,
+    "IncludeRecommendations": true,
+    "IncludeMigrationRoadmap": true,
+    "ExportToJSON": true,
+    "ExportToCSV": false,
+    "Branding": {
+      "CompanyName": "Your Organization",
+      "LogoUrl": null,
+      "PrimaryColor": "#0078d4",
+      "SecondaryColor": "#106ebe",
+      "IncludeDisclaimer": true,
+      "CustomDisclaimer": null
+    },
+    "ITReport": {
+      "IncludeDetailedAnalysis": true,
+      "IncludePowerShellCommands": true,
+      "IncludeRemediationSteps": true,
+      "IncludeDependencyMap": true
+    },
+    "ExecutiveReport": {
+      "IncludeRiskDashboard": true,
+      "IncludeTimelineEstimate": true,
+      "IncludeBudgetConsiderations": true,
+      "SummaryLength": "detailed"
+    }
+  },
+
+  "Analysis": {
+    "_description": "Configure gotcha detection and analysis engine",
+    "EnableGotchaDetection": true,
+    "SeverityThreshold": "Low",
+    "CustomRules": [],
+    "ExcludedCategories": [],
+    "RiskCategories": {
+      "Identity": true,
+      "Data": true,
+      "Compliance": true,
+      "Integration": true,
+      "Infrastructure": true,
+      "Operations": true
+    },
+    "ComplexityScoring": {
+      "Enabled": true,
+      "Weights": {
+        "UserCount": 1.0,
+        "HybridIdentity": 1.5,
+        "CustomApps": 1.3,
+        "Compliance": 1.4,
+        "DataVolume": 1.2
+      }
+    },
+    "MigrationPrioritization": {
+      "Enabled": true,
+      "FactorWeights": {
+        "BusinessCriticality": 1.5,
+        "TechnicalComplexity": 1.3,
+        "UserImpact": 1.2,
+        "Dependencies": 1.4
+      }
+    }
+  },
+
+  "Authentication": {
+    "_description": "Configure how to authenticate to Microsoft 365 services",
+    "Method": "Interactive",
+    "_supportedMethods": ["Interactive", "ServicePrincipal", "DeviceCode"],
+
+    "_appRegistrationGuide": "Create an app registration in Entra ID with the required API permissions listed in README.md",
+    "TenantId": null,
+    "ClientId": null,
+
+    "_clientSecretNote": "ClientSecret works for Graph/Teams but SharePoint requires certificate auth for Azure AD apps",
+    "ClientSecret": null,
+
+    "_certificateNote": "REQUIRED FOR SHAREPOINT: Use CertificateThumbprint (if cert is in Windows cert store) OR CertificatePath (path to .pfx file)",
+    "CertificateThumbprint": null,
+    "CertificatePath": null,
+
+    "SharePoint": {
+      "_description": "SharePoint admin URL - required for SharePoint data collection",
+      "AdminUrl": "https://YOUR-TENANT-admin.sharepoint.com",
+      "_adminUrlNote": "Replace YOUR-TENANT with your actual tenant name"
+    }
+  },
+
+  "Logging": {
+    "_description": "Configure logging behavior",
+    "Level": "Info",
+    "_supportedLevels": ["Debug", "Info", "Warning", "Error"],
+    "LogToFile": true,
+    "LogToConsole": true,
+    "RetentionDays": 30,
+    "IncludeTimestamps": true,
+    "IncludeCallStack": false,
+    "MaxLogFileSizeMB": 50,
+    "RotateLogs": true
+  },
+
+  "Performance": {
+    "_description": "Configure performance and resource usage",
+    "ParallelCollectionEnabled": true,
+    "MaxParallelJobs": 4,
+    "ThrottlingEnabled": true,
+    "RetryCount": 3,
+    "RetryDelaySeconds": 5,
+    "TimeoutMinutes": 120,
+    "BatchSize": 100,
+    "ProgressUpdateInterval": 10
+  },
+
+  "Output": {
+    "_description": "Configure output file locations",
+    "BasePath": "./Output",
+    "CreateTimestampedFolder": true,
+    "FolderNamingPattern": "Discovery_{timestamp}",
+    "DataSubfolder": "Data",
+    "ReportsSubfolder": "Reports",
+    "LogsSubfolder": "Logs"
+  },
+
+  "Notifications": {
+    "_description": "Configure notifications (optional)",
+    "Enabled": false,
+    "Email": {
+      "Enabled": false,
+      "SmtpServer": null,
+      "From": null,
+      "To": [],
+      "Subject": "M365 Tenant Discovery Complete"
+    },
+    "Teams": {
+      "Enabled": false,
+      "WebhookUrl": null
+    }
+  },
+
+  "Communications": {
+    "_description": "Generate communication plan and templates for end-user announcements (optional, runs after AI analysis)",
+    "Enabled": true,
+    "TargetMigrationDate": null,
+    "_targetMigrationDateNote": "Set to 'YYYY-MM-DD' format or null to default to 60 days from discovery",
+
+    "GenerateEmailTemplates": true,
+    "GenerateSharePointPosts": true,
+    "GenerateTimeline": true,
+    "GenerateSupportResources": true,
+
+    "Phases": {
+      "_description": "Enable/disable specific communication phases",
+      "PreAnnouncement": true,
+      "DetailedNotice": true,
+      "OneWeekReminder": true,
+      "DayBefore": true,
+      "MigrationDay": true,
+      "Completion": true,
+      "PostMigration": true
+    },
+
+    "Timeline": {
+      "IncludeGanttChart": true,
+      "IncludeMilestoneCards": true,
+      "UseChartJS": true
+    },
+
+    "ContentGeneration": {
+      "_description": "Configure AI content generation for communications",
+      "UseAI": true,
+      "FallbackToTemplates": true,
+      "Tone": "Professional",
+      "_supportedTones": ["Professional", "Friendly", "Formal"],
+      "TargetAudience": "Non-technical business users"
+    },
+
+    "Output": {
+      "Subfolder": "Communications",
+      "CreateIndexPage": true,
+      "ExportFormats": ["HTML", "PlainText"]
+    }
+  }
+}

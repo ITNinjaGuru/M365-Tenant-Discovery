@@ -1,0 +1,18 @@
+# Actual config with secrets
+Config/discovery-config.json
+
+# Discovery output (contains tenant-specific data)
+Output/
+
+# Certificates and keys
+*.pfx
+*.pem
+*.key
+*.cer
+
+# Environment files
+.env
+.env.*
+
+# Claude Code
+.claude/
