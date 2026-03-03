@@ -9,7 +9,7 @@ This tool is designed for migration architects and IT professionals planning M36
 ## Key Features
 
 - **Comprehensive Discovery**: Collects data from all major M365 workloads
-- **60+ Gotcha Detection Rules**: Built-in analysis to identify migration risks
+- **96 Migration Risk Detection Rules**: Built-in analysis engine identifies configuration gotchas
 - **AI-Powered Insights**: Integration with GPT-5.2, Claude Opus 4.6, or Gemini 3 Pro
 - **Professional Reports**: HTML reports for IT teams and executive leadership
 - **Risk Scoring**: Quantified complexity and risk assessment
@@ -232,7 +232,7 @@ Output/
         └── TenantDiscovery_*.log        # Execution log
 ```
 
-## Migration Gotchas Detected (60+ Rules)
+## Migration Gotchas Detected (96 Rules)
 
 ### Identity & Access (15+ rules)
 - Synced users requiring ImmutableID preservation

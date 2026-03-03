@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-M365 Tenant Discovery & Migration Assessment Tool — a PowerShell 7+ toolset that connects to Microsoft 365 tenants, collects configuration data across all major workloads, runs 90+ migration risk detection rules (98 as of v2.0), optionally sends data to an AI provider (GPT-5.2, Claude Opus 4.6, or Gemini 3) for deeper analysis, and generates interactive HTML/PDF/Excel/CSV reports for IT teams and executives.
+M365 Tenant Discovery & Migration Assessment Tool — a PowerShell 7+ toolset that connects to Microsoft 365 tenants, collects configuration data across all major workloads, runs 96 migration risk detection rules, optionally sends data to an AI provider (GPT-5.2, Claude Opus 4.6, or Gemini 3) for deeper analysis, and generates interactive HTML/PDF/Excel/CSV reports for IT teams and executives.
 
 ## Development Setup
 
@@ -81,7 +81,7 @@ Use `Invoke-ITReportOnly.ps1` or `Invoke-ExecutiveReportOnly.ps1` when you need 
 2. **Prerequisite Check** — verifies Microsoft.Graph, ExchangeOnlineManagement, MicrosoftTeams, PnP.PowerShell are installed
 3. **Service Connection** — `Connect-M365Services` handles auth (interactive or ServicePrincipal) for Graph, Exchange, SharePoint (PnP), Teams, Security & Compliance
 4. **Data Collection** — 8 sequential collection phases, each via `Invoke-*Collection` functions; collected data stored in `$script:CollectedData` hashtable in Core module
-5. **Gotcha Analysis** — `Invoke-GotchaAnalysis` runs 90+ rule-based checks; `Get-ComplexityScore` and `Get-MigrationPriorities` compute risk metrics
+5. **Gotcha Analysis** — `Invoke-GotchaAnalysis` runs 96 rule-based checks; `Get-ComplexityScore` and `Get-MigrationPriorities` compute risk metrics
 6. **AI Analysis** (optional) — 3-batch approach: (1) Executive Summary + Remediation, (2) Planning + Resources, (3) Full Playbook with scripts; scripts extracted to individual `.ps1` files
 7. **Report Generation** — Static HTML, PDF, Interactive HTML (Chart.js), Excel workbook, optional detailed CSVs
 8. **Communication Plan** (optional) — email templates, SharePoint posts, migration timeline
