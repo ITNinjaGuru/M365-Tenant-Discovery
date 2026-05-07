@@ -173,7 +173,7 @@ function Get-DefaultConfiguration {
         }
         AI = @{
             Enabled  = $true
-            Provider = "Opus4.6"  # Options: GPT-5.2, Opus4.6, Gemini-3-Pro
+            Provider = "Opus4.7"  # Options: GPT-5.5, GPT-5.4, GPT-5.2, Opus4.7, Opus4.6, Gemini-3.1-Pro, Gemini-3-Pro, Gemini-3-Flash
             ApiKey   = $null
             Endpoint = $null
         }

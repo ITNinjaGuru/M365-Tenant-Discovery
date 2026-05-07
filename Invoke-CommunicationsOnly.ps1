@@ -19,7 +19,7 @@
 .PARAMETER SecondaryColor
     Secondary brand color (hex). Defaults to "#106ebe".
 .PARAMETER AIProvider
-    AI provider to use for content generation (GPT-5.2, Opus4.6, or Gemini-3-Pro). Optional.
+    AI provider to use for content generation. Options: GPT-5.5, GPT-5.4, GPT-5.2, Opus4.7, Opus4.6, Gemini-3.1-Pro, Gemini-3-Pro, Gemini-3-Flash. Optional.
 .PARAMETER AIApiKey
     API key for AI provider. Required if AIProvider is specified.
 .PARAMETER OutputPath
@@ -54,7 +54,7 @@ param(
     [string]$SecondaryColor = "#106ebe",
 
     [Parameter(Mandatory = $false)]
-    [ValidateSet("GPT-5.2", "Opus4.6", "Gemini-3-Pro", "Gemini-3-Flash")]
+    [ValidateSet("GPT-5.5", "GPT-5.4", "GPT-5.2", "Opus4.7", "Opus4.6", "Gemini-3.1-Pro", "Gemini-3-Pro", "Gemini-3-Flash")]
     [string]$AIProvider,
 
     [Parameter(Mandatory = $false)]

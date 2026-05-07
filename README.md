@@ -10,7 +10,7 @@ This tool is designed for migration architects and IT professionals planning M36
 
 - **Comprehensive Discovery**: Collects data from all major M365 workloads
 - **96 Migration Risk Detection Rules**: Built-in analysis engine identifies configuration gotchas
-- **AI-Powered Insights**: Integration with GPT-5.2, Claude Opus 4.6, or Gemini 3 Pro
+- **AI-Powered Insights**: Integration with OpenAI GPT-5.5/5.4/5.2, Anthropic Claude Opus 4.7/4.6, or Google Gemini 3.1 Pro / Gemini 3 Pro / Gemini 3 Flash
 - **Professional Reports**: HTML reports for IT teams and executive leadership
 - **Risk Scoring**: Quantified complexity and risk assessment
 - **Migration Roadmap**: AI-generated migration prioritization and phasing
@@ -152,23 +152,25 @@ cd path\to\tenantdiscovery-claude
 
 ### With AI Analysis
 ```powershell
-# Using Claude Opus 4.6 (Recommended)
+# Using Claude Opus 4.7 (Recommended)
 .\Start-TenantDiscovery.ps1 `
     -SharePointAdminUrl "https://contoso-admin.sharepoint.com" `
-    -AIProvider "Opus4.6" `
+    -AIProvider "Opus4.7" `
     -AIApiKey $env:ANTHROPIC_API_KEY
 
-# Using OpenAI GPT-5.2
+# Using OpenAI GPT-5.5
 .\Start-TenantDiscovery.ps1 `
     -SharePointAdminUrl "https://contoso-admin.sharepoint.com" `
-    -AIProvider "GPT-5.2" `
+    -AIProvider "GPT-5.5" `
     -AIApiKey $env:OPENAI_API_KEY
 
-# Using Google Gemini 3 Pro
+# Using Google Gemini 3.1 Pro
 .\Start-TenantDiscovery.ps1 `
     -SharePointAdminUrl "https://contoso-admin.sharepoint.com" `
-    -AIProvider "Gemini-3-Pro" `
+    -AIProvider "Gemini-3.1-Pro" `
     -AIApiKey $env:GOOGLE_API_KEY
+
+# Other supported providers: GPT-5.4, GPT-5.2, Opus4.6, Gemini-3-Pro, Gemini-3-Flash
 ```
 
 ### Selective Collection
@@ -197,7 +199,7 @@ Copy-Item .\Config\discovery-config.sample.json .\Config\discovery-config.json
 | `-ConfigPath` | Path to JSON configuration file | No | None |
 | `-OutputPath` | Directory for output files | No | ./Output |
 | `-SharePointAdminUrl` | SharePoint admin center URL | Yes* | None |
-| `-AIProvider` | AI provider: GPT-5.2, Opus4.6, or Gemini-3-Pro | No | None |
+| `-AIProvider` | AI provider: GPT-5.5, GPT-5.4, GPT-5.2, Opus4.7, Opus4.6, Gemini-3.1-Pro, Gemini-3-Pro, Gemini-3-Flash | No | None |
 | `-AIApiKey` | API key for selected AI provider | Conditional | None |
 | `-SkipAI` | Skip AI-powered analysis | No | False |
 | `-SkipExchange` | Skip Exchange Online collection | No | False |
@@ -311,27 +313,32 @@ Output/
 
 ## AI Provider Setup
 
-### Claude Opus 4.6 (Anthropic) - Recommended
+### Claude Opus 4.7 / 4.6 (Anthropic) - Recommended
 ```powershell
 # Set environment variable
 $env:ANTHROPIC_API_KEY = "sk-ant-..."
 
-# Or pass directly
+# Or pass directly (Opus 4.7 is the latest)
+.\Start-TenantDiscovery.ps1 -AIProvider "Opus4.7" -AIApiKey "sk-ant-..."
 .\Start-TenantDiscovery.ps1 -AIProvider "Opus4.6" -AIApiKey "sk-ant-..."
 ```
 Get API key from [console.anthropic.com](https://console.anthropic.com)
 
-### GPT-5.2 (OpenAI)
+### GPT-5.5 / 5.4 / 5.2 (OpenAI)
 ```powershell
 $env:OPENAI_API_KEY = "sk-..."
+.\Start-TenantDiscovery.ps1 -AIProvider "GPT-5.5" -AIApiKey $env:OPENAI_API_KEY
+.\Start-TenantDiscovery.ps1 -AIProvider "GPT-5.4" -AIApiKey $env:OPENAI_API_KEY
 .\Start-TenantDiscovery.ps1 -AIProvider "GPT-5.2" -AIApiKey $env:OPENAI_API_KEY
 ```
 Get API key from [platform.openai.com](https://platform.openai.com)
 
-### Gemini 3 Pro (Google)
+### Gemini 3.1 Pro / Gemini 3 Pro / Gemini 3 Flash (Google)
 ```powershell
 $env:GOOGLE_API_KEY = "..."
-.\Start-TenantDiscovery.ps1 -AIProvider "Gemini-3-Pro" -AIApiKey $env:GOOGLE_API_KEY
+.\Start-TenantDiscovery.ps1 -AIProvider "Gemini-3.1-Pro" -AIApiKey $env:GOOGLE_API_KEY
+.\Start-TenantDiscovery.ps1 -AIProvider "Gemini-3-Pro"   -AIApiKey $env:GOOGLE_API_KEY
+.\Start-TenantDiscovery.ps1 -AIProvider "Gemini-3-Flash" -AIApiKey $env:GOOGLE_API_KEY
 ```
 Get API key from [aistudio.google.com](https://aistudio.google.com)
 
@@ -353,7 +360,7 @@ The configuration file (`discovery-config.json`) supports extensive customizatio
   },
   "AI": {
     "Enabled": true,
-    "Provider": "Opus4.6",
+    "Provider": "Opus4.7",
     "Options": {
       "MaxTokens": 12000,
       "GenerateRemediationPlans": true,
@@ -397,7 +404,7 @@ tenantdiscovery-claude/
 │       └── TenantDiscovery.HybridIdentity.psm1 # AAD Connect, federation
 ├── Analysis/
 │   ├── GotchaAnalysisEngine.psm1       # 60+ risk detection rules
-│   └── AIIntegration.psm1              # GPT-5.2, Opus 4.6, Gemini 3 Pro
+│   └── AIIntegration.psm1              # GPT-5.5/5.4/5.2, Opus 4.7/4.6, Gemini 3.1 Pro / 3 Pro / 3 Flash
 ├── Reports/
 │   └── ReportGenerator.psm1            # HTML report with Chart.js
 ├── Config/

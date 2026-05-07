@@ -3,8 +3,9 @@
 .SYNOPSIS
     AI Integration Module for M365 Migration Analysis
 .DESCRIPTION
-    Provides integration with multiple AI providers (GPT-5.2, Opus 4.6, Gemini-3-Pro, Gemini-3-Flash)
-    for intelligent analysis of migration gotchas and recommendations.
+    Provides integration with multiple AI providers (GPT-5.5, GPT-5.4, GPT-5.2,
+    Opus 4.7, Opus 4.6, Gemini-3.1-Pro, Gemini-3-Pro, Gemini-3-Flash) for
+    intelligent analysis of migration gotchas and recommendations.
 .NOTES
     Author: AI Migration Expert
     Version: 1.0.0
@@ -21,6 +22,26 @@ if (-not (Get-Command Write-Log -ErrorAction SilentlyContinue)) {
 
 #region Configuration
 $script:AIProviders = @{
+    "GPT-5.5" = @{
+        Name     = "OpenAI GPT-5.5"
+        Endpoint = "https://api.openai.com/v1/chat/completions"
+        Model    = "gpt-5.5"
+        Headers  = @{
+            "Content-Type" = "application/json"
+        }
+        AuthHeader = "Authorization"
+        AuthPrefix = "Bearer "
+    }
+    "GPT-5.4" = @{
+        Name     = "OpenAI GPT-5.4"
+        Endpoint = "https://api.openai.com/v1/chat/completions"
+        Model    = "gpt-5.4"
+        Headers  = @{
+            "Content-Type" = "application/json"
+        }
+        AuthHeader = "Authorization"
+        AuthPrefix = "Bearer "
+    }
     "GPT-5.2" = @{
         Name     = "OpenAI GPT-5.2"
         Endpoint = "https://api.openai.com/v1/chat/completions"
@@ -31,6 +52,17 @@ $script:AIProviders = @{
         AuthHeader = "Authorization"
         AuthPrefix = "Bearer "
     }
+    "Opus4.7" = @{
+        Name     = "Anthropic Claude Opus 4.7"
+        Endpoint = "https://api.anthropic.com/v1/messages"
+        Model    = "claude-opus-4-7"
+        Headers  = @{
+            "Content-Type"      = "application/json"
+            "anthropic-version" = "2023-06-01"
+        }
+        AuthHeader = "x-api-key"
+        AuthPrefix = ""
+    }
     "Opus4.6" = @{
         Name     = "Anthropic Claude Opus 4.6"
         Endpoint = "https://api.anthropic.com/v1/messages"
@@ -40,6 +72,16 @@ $script:AIProviders = @{
             "anthropic-version" = "2023-06-01"
         }
         AuthHeader = "x-api-key"
+        AuthPrefix = ""
+    }
+    "Gemini-3.1-Pro" = @{
+        Name       = "Google Gemini 3.1 Pro"
+        Endpoint   = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro:generateContent"
+        Model      = "gemini-3.1-pro"
+        Headers    = @{
+            "Content-Type" = "application/json"
+        }
+        AuthHeader = "url-param"
         AuthPrefix = ""
     }
     "Gemini-3-Pro" = @{
@@ -77,7 +119,7 @@ function Set-AIProvider {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory = $true)]
-        [ValidateSet("GPT-5.2", "Opus4.6", "Gemini-3-Pro", "Gemini-3-Flash")]
+        [ValidateSet("GPT-5.5", "GPT-5.4", "GPT-5.2", "Opus4.7", "Opus4.6", "Gemini-3.1-Pro", "Gemini-3-Pro", "Gemini-3-Flash")]
         [string]$Provider,
 
         [Parameter(Mandatory = $true)]

@@ -6,7 +6,8 @@
     Comprehensive tool for discovering and analyzing Microsoft 365 tenant configuration
     to identify migration gotchas and risks for tenant-to-tenant migrations.
 
-    Supports AI-powered analysis using GPT-5.2, Claude Opus 4.6, or Google Gemini 3 Pro.
+    Supports AI-powered analysis using OpenAI GPT-5.5/5.4/5.2, Anthropic Claude Opus 4.7/4.6,
+    or Google Gemini 3.1 Pro / Gemini 3 Pro / Gemini 3 Flash.
 
     Generates detailed IT technical reports and executive summaries.
 
@@ -20,7 +21,7 @@
     SharePoint admin center URL (e.g., https://contoso-admin.sharepoint.com)
 
 .PARAMETER AIProvider
-    AI provider for enhanced analysis. Options: GPT-5.2, Opus4.6, Gemini-3-Pro
+    AI provider for enhanced analysis. Options: GPT-5.5, GPT-5.4, GPT-5.2, Opus4.7, Opus4.6, Gemini-3.1-Pro, Gemini-3-Pro, Gemini-3-Flash
 
 .PARAMETER AIApiKey
     API key for the selected AI provider
@@ -102,7 +103,7 @@ param(
     [string]$SharePointAdminUrl,
 
     [Parameter(Mandatory = $false)]
-    [ValidateSet("GPT-5.2", "Opus4.6", "Gemini-3-Pro", "Gemini-3-Flash")]
+    [ValidateSet("GPT-5.5", "GPT-5.4", "GPT-5.2", "Opus4.7", "Opus4.6", "Gemini-3.1-Pro", "Gemini-3-Pro", "Gemini-3-Flash")]
     [string]$AIProvider,
 
     [Parameter(Mandatory = $false)]

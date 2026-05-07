@@ -11,7 +11,7 @@
 .PARAMETER DiscoveryDataPath
     Path to the discovery data JSON file (e.g., ./Output/Discovery_YYYYMMDD_HHMMSS/Data/TenantDiscovery_Full.json)
 .PARAMETER AIProvider
-    AI provider to use (GPT-5.2, Opus4.6, or Gemini-3-Pro)
+    AI provider to use. Options: GPT-5.5, GPT-5.4, GPT-5.2, Opus4.7, Opus4.6, Gemini-3.1-Pro, Gemini-3-Pro, Gemini-3-Flash
 .PARAMETER AIApiKey
     API key for the selected AI provider
 .PARAMETER OutputPath
@@ -30,7 +30,7 @@ param(
     [string]$DiscoveryDataPath,
 
     [Parameter(Mandatory = $true)]
-    [ValidateSet("GPT-5.2", "Opus4.6", "Gemini-3-Pro", "Gemini-3-Flash")]
+    [ValidateSet("GPT-5.5", "GPT-5.4", "GPT-5.2", "Opus4.7", "Opus4.6", "Gemini-3.1-Pro", "Gemini-3-Pro", "Gemini-3-Flash")]
     [string]$AIProvider,
 
     [Parameter(Mandatory = $true)]

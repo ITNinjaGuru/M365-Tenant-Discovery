@@ -137,8 +137,8 @@
   "AI": {
     "_description": "Configure AI provider for intelligent analysis and recommendations",
     "Enabled": true,
-    "Provider": "GPT-5.2",
-    "_supportedProviders": ["GPT-5.2", "Opus4.6", "Gemini-3-Pro"],
+    "Provider": "Opus4.7",
+    "_supportedProviders": ["GPT-5.5", "GPT-5.4", "GPT-5.2", "Opus4.7", "Opus4.6", "Gemini-3.1-Pro", "Gemini-3-Pro", "Gemini-3-Flash"],
     "ApiKey": null,
     "Endpoint": null,
     "Options": {
